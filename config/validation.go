@@ -16,8 +16,8 @@ type InputValidation struct {
 }
 
 // NewInputValidation merupakan fungsi yang akan mengembalikan struct InputValidation
-func NewInputValidation(validator *validator.Validate) *InputValidation {
-	return &InputValidation{Validator: validator}
+func NewInputValidation() *InputValidation {
+	return &InputValidation{Validator: validator.New()}
 }
 
 // Method Validate() adalah logic dari validasi input yang akan kita buat
