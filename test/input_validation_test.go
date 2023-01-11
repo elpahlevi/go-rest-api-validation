@@ -6,13 +6,10 @@ import (
 
 	"github.com/elpahlevi/go-rest-api-validation/config"
 	"github.com/elpahlevi/go-rest-api-validation/model"
-	"github.com/go-playground/validator/v10"
 )
 
 func TestInputValidationSuccess(t *testing.T) {
-	validator := validator.New()
-	inputValidation := config.NewInputValidation(validator)
-
+	inputValidation := config.NewInputValidation()
 	data := model.RegisterInput{
 		Name:     "Mikey",
 		Email:    "mikey@mail.com",
@@ -27,9 +24,7 @@ func TestInputValidationSuccess(t *testing.T) {
 }
 
 func TestInputValidationFailedOne(t *testing.T) {
-	validator := validator.New()
-	inputValidation := config.NewInputValidation(validator)
-
+	inputValidation := config.NewInputValidation()
 	data := model.RegisterInput{
 		Name:     "Mikey",
 		Email:    "mikeymail.com",
@@ -44,9 +39,7 @@ func TestInputValidationFailedOne(t *testing.T) {
 }
 
 func TestInputValidationFailedMoreThanOne(t *testing.T) {
-	validator := validator.New()
-	inputValidation := config.NewInputValidation(validator)
-
+	inputValidation := config.NewInputValidation()
 	data := model.RegisterInput{
 		Name:     "Mikey",
 		Email:    "mikeymail.com",
@@ -61,9 +54,7 @@ func TestInputValidationFailedMoreThanOne(t *testing.T) {
 }
 
 func TestInputValidationFailedPhoneNumber(t *testing.T) {
-	validator := validator.New()
-	inputValidation := config.NewInputValidation(validator)
-
+	inputValidation := config.NewInputValidation()
 	data := model.RegisterInput{
 		Name:     "Mikey",
 		Email:    "mikey@mail.com",
