@@ -6,11 +6,10 @@ import (
 	"github.com/elpahlevi/go-rest-api-validation/config"
 	"github.com/elpahlevi/go-rest-api-validation/controller"
 	"github.com/elpahlevi/go-rest-api-validation/service"
-	"github.com/go-playground/validator/v10"
 )
 
 func main() {
-	inputValidation := config.NewInputValidation(validator.New())
+	inputValidation := config.NewInputValidation()
 	server := config.NewHTTPServer()
 
 	authService := service.NewAuthService(inputValidation)
