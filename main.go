@@ -9,8 +9,8 @@ import (
 )
 
 func main() {
-	inputValidation := config.NewInputValidation()
 	server := config.NewHTTPServer()
+	inputValidation := config.NewInputValidation()
 
 	authService := service.NewAuthService(inputValidation)
 	authController := controller.NewAuthController(authService)
