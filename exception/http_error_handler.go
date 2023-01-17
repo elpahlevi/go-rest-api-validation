@@ -17,7 +17,7 @@ func NewHTTPErrorHandler(ctx *fiber.Ctx, err error) error {
 			Status:  http.StatusText(e.Code),
 			Message: e.Error(),
 		}
-		return ctx.Status(int(e.Code)).JSON(response)
+		return ctx.Status(e.Code).JSON(response)
 	case *HTTPInputValidationError:
 		response := model.WebErrorInputResponse{
 			Code:       fiber.StatusBadRequest,
@@ -38,6 +38,6 @@ func NewHTTPErrorHandler(ctx *fiber.Ctx, err error) error {
 			Status:  http.StatusText(fiber.StatusInternalServerError),
 			Message: e.Error(),
 		}
-		return ctx.Status(int(response.Code)).JSON(response)
+		return ctx.Status(response.Code).JSON(response)
 	}
 }

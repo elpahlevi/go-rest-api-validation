@@ -11,7 +11,7 @@ import (
 
 // Agar method yang ada di AuthService bisa digunakan, kita bisa membuat interface untuk menjembataninya
 type AuthService interface {
-	Save(ctx context.Context, data *model.RegisterInput) model.ServiceResponse
+	Register(ctx context.Context, data *model.RegisterInput) model.ServiceResponse
 }
 
 type AuthControllerImpl struct {
@@ -33,10 +33,10 @@ func (controller *AuthControllerImpl) Register(ctx *fiber.Ctx) error {
 		panic(exception.NewHTTPError(400, err))
 	}
 
-	response := controller.AuthService.Save(ctx.Context(), data)
-	return ctx.Status(fiber.StatusOK).JSON(model.WebResponse{
-		Code:    fiber.StatusOK,
-		Status:  http.StatusText(fiber.StatusOK),
+	response := controller.AuthService.Register(ctx.Context(), data)
+	return ctx.Status(fiber.StatusCreated).JSON(model.WebResponse{
+		Code:    fiber.StatusCreated,
+		Status:  http.StatusText(fiber.StatusCreated),
 		Message: response.Message,
 	})
 }
